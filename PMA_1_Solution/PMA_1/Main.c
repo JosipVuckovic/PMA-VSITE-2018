@@ -65,8 +65,6 @@ void main_menu(void)
 	}
 void do_you_want_more(void)
 {
-	
-
 	printf("****************************************************************\n");
 	printf("*Zelite li drugi zadatak?*\n");
 	printf("****************************************************************\n");
