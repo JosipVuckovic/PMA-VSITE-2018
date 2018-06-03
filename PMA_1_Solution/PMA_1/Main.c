@@ -1,11 +1,15 @@
 ﻿#include <stdio.h>
 #include <string.h>
 #include <conio.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 
 
 void main_menu(void);
 void zadatak_1(void);
 void do_you_want_more(void);
+void zadatak_4(void);
 
 int main()
 {
@@ -25,10 +29,10 @@ void main_menu(void)
 	printf("*    1 - Zadatak 1 - Izracun potrosnje pretplate za mobitel      *\n");
 	printf("*    2 - Zadatak 2 -                                             *\n");
 	printf("*    3 - Zadatak 3 -                                             *\n");
-	printf("*    4 - Zadatak 4 -                                             *\n");
+	printf("*    4 - Zadatak 4 - Opseg trokuta, kruga ili pravokutnika       *\n");
 	/*printf("*    5 - Zadatak 5 -   *\n");*/
-	printf("*    6 - Izlaz                                                    *\n");
-	printf("*******************************************************************\n");
+	printf("*    6 - Izlaz                                                   *\n");
+	printf("******************************************************************\n");
 	printf("         Vas izbor: ");
 		scanf_s(" %c",&izbor);
 	switch (izbor)
@@ -45,7 +49,7 @@ void main_menu(void)
 		/*Zad3Sub();*/
 		break;
 	case '4':
-		/*Zad4Sub();*/
+		zadatak_4();
 		break;
 	case '5':
 		/*Zad5Sub();*/
@@ -70,7 +74,7 @@ void do_you_want_more(void)
 	printf("****************************************************************\n");
 	printf("*Zelite li drugi zadatak?*\n");
 	printf("****************************************************************\n");
-	printf("y/n:\n");
+	printf("y/n: ");
 	scanf_s(" %c", &odabir);
 	switch (odabir)
 	{
@@ -195,5 +199,72 @@ void do_you_want_more(void)
 
 	}
 
+	void zadatak_4(void)
+	{
+		char izbor;
+		float stranica_a, stranica_b, stranica_c;
+		system("cls");
+		printf("**********************************************************************\n");
+		printf("*                     Zadatak 4                                      *\n");
+		printf("* Zadatak racuna opseg pravokutnika, trokuta ili kruga. Korisnik sam *\n");
+		printf("* odlucuje koji opseg ce se racunati.                                *\n");
+		printf("*                    1 - opseg kruga                                 *\n");
+		printf("*                    2 - opseg trokuta                               *\n");
+		printf("*                    3 - opseg pravokutnika                          *\n");
+		printf("**********************************************************************\n");
+		printf("                     Vas odabir: ");
+		scanf_s(" %c", &izbor);
+		printf("\n");
+		switch (izbor)
+		{
+		case '1':
+			printf("Izabrali ste opseg kruga.\n");
+			printf("formula: O = 2 * r * π\n\n");
+			printf("Unesite radijus: ");
+			scanf_s("%f", &stranica_a);
+			printf("\n");
+			printf("Opseg kruga iznosi: %.2f", 2*stranica_a*M_PI);
+			printf("\n\n");
+			
+			do_you_want_more();
+			break;
+		case '2':
+			printf("Izabrali ste opseg trokuta.\n");
+			printf("formula: O = a + b + c\n\n");
+			printf("Unesite stranicu a: ");
+			scanf_s("%f", &stranica_a);
+			printf("\n");
+			printf("Unesite stranicu b: ");
+			scanf_s("%f", &stranica_b);
+			printf("\n");
+			printf("Unesite stranicu c: ");
+			scanf_s("%f", &stranica_c);
+			printf("\n");
+			printf("Opseg trokuta iznosi: %.2f", stranica_a+stranica_b+stranica_c);
+			printf("\n\n");
+
+			do_you_want_more();
+			break;
+		case '3':
+			printf("Izabrali ste opseg pravokutnika.\n");
+			printf("formula: O = 2 * (a + b)\n\n");
+			printf("Unesite stranicu a: ");
+			scanf_s("%f", &stranica_a);
+			printf("\n");
+			printf("Unesite stranicu b: ");
+			scanf_s("%f", &stranica_b);
+			printf("\n");
+			printf("Opseg pravokutnika iznosi: %.2f", 2*(stranica_a + stranica_b));
+			printf("\n\n");
+
+			do_you_want_more();
+			break;
+		default:
+			printf("\n Nepoznat izbor!\n");
+			zadatak_4();
+			break;
+		}
 	
+	}
+
 	
