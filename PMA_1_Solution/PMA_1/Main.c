@@ -10,6 +10,8 @@ void main_menu(void);
 void zadatak_1(void);
 void do_you_want_more(void);
 void zadatak_4(void);
+void zadatak_2(void);
+void zadatak_3(void);
 
 int main()
 {
@@ -27,8 +29,8 @@ void main_menu(void)
 	char izbor;
 	printf("******************************************************************\n");
 	printf("*    1 - Zadatak 1 - Izracun potrosnje pretplate za mobitel      *\n");
-	printf("*    2 - Zadatak 2 -                                             *\n");
-	printf("*    3 - Zadatak 3 -                                             *\n");
+	printf("*    2 - Zadatak 2 - Pregled zadovoljenih uvijeta, if uvijet     *\n");
+	printf("*    3 - Zadatak 3 - Pregled u kojem kvadratu je tocka, if uvijet*\n");
 	printf("*    4 - Zadatak 4 - Opseg trokuta, kruga ili pravokutnika       *\n");
 	/*printf("*    5 - Zadatak 5 -   *\n");*/
 	printf("*    6 - Izlaz                                                   *\n");
@@ -43,10 +45,10 @@ void main_menu(void)
 		zadatak_1();
 			break;
 	case '2':
-		/*Zad2Sub();*/
+		zadatak_2();
 		break;
 	case '3':
-		/*Zad3Sub();*/
+		zadatak_3();
 		break;
 	case '4':
 		zadatak_4();
@@ -267,4 +269,150 @@ void do_you_want_more(void)
 	
 	}
 
-	
+	 void zadatak_2(void)
+	{
+		int bodovi_matematika;
+		int bodovi_hrvatski;
+		int bodovi_informatika;
+		int bodovi_ukupno;
+		system("cls");
+		printf("**********************************************************************\n");
+		printf("*                           Zadatak 2                                *\n");
+		printf("* Unosimo bodove iz matematike, hravatskog, informatike i ukupne     *\n");
+		printf("* bodove. Specifikacije bodovnih pragova su u tekstu vjezbe.         *\n");
+		printf("* Kada korisnik unese bodove, program mu daje poruku o tome koja     *\n");
+		printf("* opcija je zadovoljena, ukoliko nije, to se takoder javlja.         *\n");
+		printf("**********************************************************************\n");
+		printf("\n");
+		printf("Unesite bodove iz matematike: ");
+		scanf_s("%d", &bodovi_matematika);
+		printf("\n");
+		printf("Unesite bodove iz hrvatskog: ");
+		scanf_s("%d", &bodovi_hrvatski);
+		printf("\n");
+		printf("Unesite bodove iz informatike: ");
+		scanf_s("%d", &bodovi_informatika);
+		printf("\n");
+		printf("Unesite ukupan broj bodova: ");
+		scanf_s("%d", &bodovi_ukupno);
+		printf("\n");
+		printf("**********************************************************************\n");
+		printf("\n");
+		if (bodovi_matematika>=60 && bodovi_hrvatski>= 50 && bodovi_informatika>= 50 && bodovi_ukupno>=180)
+		{
+			printf("Cestitamo! Zadovoljili ste opciju 1! \n");
+			printf("\n");
+
+		}
+		else if (bodovi_matematika>=60 && bodovi_informatika >=50 && bodovi_ukupno>=140)
+		{
+			printf("Cestitamo! Zadovoljili ste opciju 2! \n");
+			printf("\n");
+		}
+		else
+		{
+			printf("Nazalost, niste zadovoljli niti jednu opciju. :( \n");
+			printf("\n");
+		}
+		do_you_want_more();
+		
+	}
+	 void zadatak_3(void)
+	 {
+		 float koordinata_x;
+		 float koordinata_y;
+
+		 system("cls");
+		 printf("**********************************************************************\n");
+		 printf("*                           Zadatak 3                                *\n");
+		 printf("* Korisnik unosi X i Y koordinatu neke tocke, a program javlja u     *\n");
+		 printf("* kojem se kvadrntu tocka nalazi.                                    *\n");
+		 printf("**********************************************************************\n");
+		 printf("\n");
+		 printf("Unesite X koordinatu: ");
+		 scanf_s("%f", &koordinata_x);
+		 printf("\n");
+		 printf("Unesite Y koordinatu: ");
+		 scanf_s("%f", &koordinata_y);
+		 if (koordinata_x > 0 && koordinata_y > 0)
+		 {
+			 printf("\n Tocka se nalazi u prvom kvadrantu.\n");
+			 printf("\n");
+			 printf("         ^\n");
+			 printf("         |y \n");
+			 printf("         |\n");
+			 printf("         | .T(%.2f,%.2f) \n",koordinata_x,koordinata_y);
+			 printf("         | \n");
+			 printf("---------|-----------> \n");
+			 printf("         |        x \n");
+			 printf("         |  \n");
+			 printf("         |  \n");
+			 printf("         |  \n");
+			 printf("\n");
+		 }
+		 else if (koordinata_x< 0 && koordinata_y >0)
+		 {
+			 printf("\n Tocka se nalazi u drugom kvadrantu.\n");
+			 printf("\n");
+			 printf("               ^\n");
+			 printf("               |y \n");
+			 printf("               |\n");
+			 printf("(%.2f,%.2f)T. |  \n", koordinata_x, koordinata_y);
+			 printf("               | \n");
+			 printf("      ---------|-----------> \n");
+			 printf("               |        x \n");
+			 printf("               |  \n");
+			 printf("               |  \n");
+			 printf("               |  \n");
+			 printf("\n");
+		 }
+		 else if (koordinata_x <0 && koordinata_y <0)
+		 {
+			 printf("\n Tocka se nalazi u trecem kvadrantu.\n");
+			 printf("\n");
+			 printf("                ^\n");
+			 printf("                |y \n");
+			 printf("                |\n");
+			 printf("                |  \n");
+			 printf("                | \n");
+			 printf("       ---------|-----------> \n");
+			 printf("                |        x \n");
+			 printf("(%.2f,%.2f)T. |  \n", koordinata_x, koordinata_y);
+			 printf("                |  \n");
+			 printf("                |  \n");
+			 printf("\n");
+		 }
+		 else if (koordinata_x >0 && koordinata_y <0)
+		 {
+			 printf("\n Tocka se nalazi u trecem kvadrantu.\n");
+			 printf("\n");
+			 printf("         ^\n");
+			 printf("         |y \n");
+			 printf("         |\n");
+			 printf("         | \n");
+			 printf("         | \n");
+			 printf("---------|-----------> \n");
+			 printf("         |        x \n");
+			 printf("         | .T(%.2f,%.2f)\n", koordinata_x, koordinata_y);
+			 printf("         |  \n");
+			 printf("         |  \n");
+			 printf("\n");
+		 }
+		 else
+		 {
+			 printf("\n Tocka se nalazi u ishodistu.\n");
+			 printf("\n");
+			 printf("         ^\n");
+			 printf("         |y \n");
+			 printf("         |\n");
+			 printf("         | \n");
+			 printf("         | T(0,0) \n");
+			 printf("---------|-----------> \n");
+			 printf("         |        x \n");
+			 printf("         | \n");
+			 printf("         |  \n");
+			 printf("         |  \n");
+			 printf("\n");
+		 }
+		 do_you_want_more();
+	 }
