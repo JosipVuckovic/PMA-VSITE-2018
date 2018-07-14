@@ -101,7 +101,7 @@ void zadatak_1(void)
 	printf("**********************************************************************\n");
 	printf("*                           Zadatak 1                                *\n");
 	printf("* Simuliramo bacanje novcica sve dok tri puta za redom ne dobijemo   *\n");
-	printf("* istu stranu novcica, 0 je pismo, 1 je glava.                       *\n");
+	printf("* istu stranu novcica, 1 je pismo, 0 je glava.                       *\n");
 	printf("**********************************************************************\n");
 	printf("\n");
 	while (tri_za_redom!=1)
