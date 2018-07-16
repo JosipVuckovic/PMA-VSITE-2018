@@ -2,11 +2,16 @@
 #include <string.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 void main_menu(void);
 void do_you_want_more(void);
 void zadatak_1(void);
+int zadatak_2();
+void zadatak_3(void);
+
+
 
 int main()
 {
@@ -19,6 +24,8 @@ int main()
 
 	return 0;
 }
+
+
 
 void main_menu(void)
 {
@@ -38,16 +45,16 @@ void main_menu(void)
 	case '1':
 		zadatak_1();
 		break;
-	/*case '2':
+	case '2':
 		zadatak_2();
 		break;
 	case '3':
 		zadatak_3();
-		break;*/
+		break;
 	/*case '4':
 		zadatak_4();
-		break;*/
-	/*case '5':
+		break;
+	case '5':
 		Zad5Sub();
 		break;*/
 	case '6':
@@ -134,4 +141,127 @@ void zadatak_1(void)
 	printf("\n");
 	do_you_want_more();
 	
+}
+int provjera_zad_2(int broj)
+{
+	int znamenka;
+	int zbroj=0;
+	while (broj != 0)
+	{
+		znamenka = broj % 10;
+		broj = broj / 10;
+		if (znamenka % 2 != 0)
+		{
+			zbroj = 0;
+			break;
+		}
+		else
+		{
+			zbroj = zbroj + (znamenka * znamenka);
+		}
+	}
+	return zbroj;
+}
+int zadatak_2()
+{
+	int donja_granica;
+	int gornja_granica;
+	int zbroj;
+	system("cls");
+	printf("**********************************************************************\n");
+	printf("*                           Zadatak 2                                *\n");
+	printf("* Unosimo granice brojeva te izmedu tih granica (granice ukljucene)  *\n");
+	printf("* gledamo koji brojevi su sastavljeni samo od parnih znamenki, kod   *\n");
+	printf("* brojeva koji su sastavljeni samo od parnih znamenki ispisujemo     *\n");
+	printf("* zbroj kvadrata znamenki, kod onih koji nisu sastavljeni samo od    *\n");
+	printf("* parnih znamenki samo ispisujemo poruku kako znamenke nisu parne.   *\n");
+	printf("**********************************************************************\n");
+	printf("\n");
+	printf("Unesite donju granicu: ");
+	scanf_s("%d", &donja_granica);
+	printf("\n");
+	printf("Unesite gornju granicu: ");
+	scanf_s("%d", &gornja_granica);
+	printf("\n");
+	printf("**********************************************************************\n");
+	printf("\n");
+	for (donja_granica; donja_granica <= gornja_granica; donja_granica++)
+	{
+		zbroj = provjera_zad_2(donja_granica);
+		if (zbroj > 0)
+		{
+			printf("Broj: %d ima sve parne znamenke, suma kvadrata: %d\n", donja_granica, zbroj);
+		}
+		else
+		{
+			printf("Broj: %d nema sve parne znamenke!\n", donja_granica);
+		}
+	}
+	printf("\n");
+	do_you_want_more();
+	return 0;
+}
+struct Temp_po_godini
+{
+	int redni_broj_godine;
+	float najniza_temperatura;
+	float najvisa_temperatura;
+};
+
+void zadatak_3(void)
+{
+	struct Temp_po_godini *Temperature;
+	int broj_godina;
+	int i;
+	float unesena_temperatura;
+	float unesena_temperatura_2;
+	int b;
+	system("cls");
+	printf("**********************************************************************\n");
+	printf("*                           Zadatak 3                                *\n");
+	printf("* Traziti od korisnika broj godina u nekom mjernom razdoblju,        *\n");
+	printf("* upisati dvije temperature za svaku godinu, manju tretirati kao     *\n");
+	printf("* najmanju izmjerenu a vecu kao najvisu izmjerenu.                   *\n");
+	printf("* Izracunati prosjek najnizih i najvisih temperatura.                *\n");
+	printf("**********************************************************************\n");
+	printf("\n");
+	printf("Unesite za koliko godina unosite temperature: ");
+	scanf_s("%d", &broj_godina);
+	printf("\n");
+	Temperature=malloc(broj_godina+1 ,sizeof(Temperature));
+	b = broj_godina + 1;
+
+	for (i=1; i <= broj_godina; i++)
+	{
+		Temperature->redni_broj_godine = i;
+		printf("Unosite temperaturu za %d mjernu godinu.\n", i);
+		printf("Unesite prvu temperaturu: ");
+		scanf_s("%f", &unesena_temperatura);
+		printf("\n");
+		printf("Unesite drugu temperaturu: ");
+		scanf_s("%f", &unesena_temperatura_2);
+		printf("\n");
+		if (unesena_temperatura < unesena_temperatura_2)
+		{
+			Temperature[i].najniza_temperatura = unesena_temperatura;
+			Temperature[i].najvisa_temperatura = unesena_temperatura_2;
+		}
+		else
+		{
+			Temperature[i].najniza_temperatura = unesena_temperatura_2;
+			Temperature[i].najvisa_temperatura = unesena_temperatura;
+		}
+		Temperature[b].najniza_temperatura += Temperature[i].najniza_temperatura;
+		Temperature[b].najvisa_temperatura += Temperature[i].najvisa_temperatura;
+	}
+	for ( i = 0; i <= broj_godina ; i++)
+	{
+		
+	}
+	printf("\n");
+	printf("Prosjek najnizih temperatura je: %.2f\n", Temperature[b].najniza_temperatura / broj_godina);
+	printf("Prosjek najvisih temperatura je: %.2f\n", Temperature[b].najvisa_temperatura / broj_godina);
+	printf("\n");
+	do_you_want_more();
+	free(Temperature);
 }
