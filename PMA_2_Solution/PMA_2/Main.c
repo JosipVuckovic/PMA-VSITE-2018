@@ -227,8 +227,9 @@ void zadatak_3(void)
 	printf("Unesite za koliko godina unosite temperature: ");
 	scanf_s("%d", &broj_godina);
 	printf("\n");
-	Temperature=malloc(broj_godina+1 ,sizeof(Temperature));
-	
+	Temperature=malloc(broj_godina ,sizeof(Temperature));
+	Temperature[0].najniza_temperatura = 0;
+	Temperature[0].najvisa_temperatura = 0;
 	
 	for (i=1; i <= broj_godina; i++)
 	{
@@ -236,7 +237,6 @@ void zadatak_3(void)
 		printf("Unosite temperaturu za %d mjernu godinu.\n", i);
 		printf("Unesite prvu temperaturu: ");
 		scanf_s("%f", &unesena_temperatura);
-		printf("\n");
 		printf("Unesite drugu temperaturu: ");
 		scanf_s("%f", &unesena_temperatura_2);
 		printf("\n");
@@ -250,14 +250,14 @@ void zadatak_3(void)
 			Temperature[i].najniza_temperatura = unesena_temperatura_2;
 			Temperature[i].najvisa_temperatura = unesena_temperatura;
 		}
-		Temperature[broj_godina+1].najniza_temperatura += Temperature[i].najniza_temperatura;
-		Temperature[broj_godina+1].najvisa_temperatura += Temperature[i].najvisa_temperatura;
+		Temperature[0].najniza_temperatura += Temperature[i].najniza_temperatura;
+		Temperature[0].najvisa_temperatura += Temperature[i].najvisa_temperatura;
 	}
 	
 	printf("\n");
-	printf("Prosjek najnizih temperatura je: %.2f\n", Temperature[broj_godina+1].najniza_temperatura / broj_godina);
-	printf("Prosjek najvisih temperatura je: %.2f\n", Temperature[broj_godina+1].najvisa_temperatura / broj_godina);
-	free(Temperature);
+	printf("Prosjek najnizih temperatura je: %.2f\n", Temperature[0].najniza_temperatura / broj_godina);
+	printf("Prosjek najvisih temperatura je: %.2f\n", Temperature[0].najvisa_temperatura / broj_godina);
+	/*free(Temperature);*/
 	printf("\n");
 	do_you_want_more();
 }
