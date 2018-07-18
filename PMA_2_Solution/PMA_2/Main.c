@@ -210,12 +210,11 @@ struct Temp_po_godini
 
 void zadatak_3(void)
 {
-	struct Temp_po_godini *Temperature;
+	struct Temp_po_godini *Temperature=NULL;
 	int broj_godina;
 	int i;
 	float unesena_temperatura;
 	float unesena_temperatura_2;
-	int b;
 	system("cls");
 	printf("**********************************************************************\n");
 	printf("*                           Zadatak 3                                *\n");
@@ -229,8 +228,8 @@ void zadatak_3(void)
 	scanf_s("%d", &broj_godina);
 	printf("\n");
 	Temperature=malloc(broj_godina+1 ,sizeof(Temperature));
-	b = broj_godina + 1;
-
+	
+	
 	for (i=1; i <= broj_godina; i++)
 	{
 		Temperature->redni_broj_godine = i;
@@ -251,17 +250,14 @@ void zadatak_3(void)
 			Temperature[i].najniza_temperatura = unesena_temperatura_2;
 			Temperature[i].najvisa_temperatura = unesena_temperatura;
 		}
-		Temperature[b].najniza_temperatura += Temperature[i].najniza_temperatura;
-		Temperature[b].najvisa_temperatura += Temperature[i].najvisa_temperatura;
+		Temperature[broj_godina+1].najniza_temperatura += Temperature[i].najniza_temperatura;
+		Temperature[broj_godina+1].najvisa_temperatura += Temperature[i].najvisa_temperatura;
 	}
-	for ( i = 0; i <= broj_godina ; i++)
-	{
-		
-	}
+	
 	printf("\n");
-	printf("Prosjek najnizih temperatura je: %.2f\n", Temperature[b].najniza_temperatura / broj_godina);
-	printf("Prosjek najvisih temperatura je: %.2f\n", Temperature[b].najvisa_temperatura / broj_godina);
+	printf("Prosjek najnizih temperatura je: %.2f\n", Temperature[broj_godina+1].najniza_temperatura / broj_godina);
+	printf("Prosjek najvisih temperatura je: %.2f\n", Temperature[broj_godina+1].najvisa_temperatura / broj_godina);
+	free(Temperature);
 	printf("\n");
 	do_you_want_more();
-	free(Temperature);
 }
