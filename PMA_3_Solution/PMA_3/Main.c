@@ -104,7 +104,7 @@ float zadatak_1()
 	float tecaj_GBP=0;
 	char izbor_valute=NULL;
 	char *prijenos_podataka=NULL;
-	char tecaj[14] = { "" };;
+	char tecaj[14] = { "" };
 	FILE *tecajna_list;
 	int i = 0;
 	float iznos_hrk,iznos_devize;
@@ -131,7 +131,6 @@ float zadatak_1()
 		printf(tecaj);
 		printf("\n");*/
 		switch (i)
-		/*Svaki drugi nosi podatak, provjeriti jos tocno zasto je tako, dali je zbog novih redova?*/
 		{
 		case 0:
 			tecaj_USD = atof(tecaj);
