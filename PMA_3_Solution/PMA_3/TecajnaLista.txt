@@ -1,0 +1,5 @@
+USD=6.3907
+EUR=7.3545
+GBP=8.2701
+
+/*Ne dirati oblik fajla!!!/*
